@@ -1,6 +1,4 @@
 const fs = require('fs');
-const readline = require('readline');
-
 const fileContent = fs.readFileSync('input.txt', 'utf-8');
 const lines = fileContent.split(/\r?\n/);
 
@@ -60,7 +58,7 @@ function part2(){
     for(const line of lines){
 
         const regexleft = /(zero|one|two|three|four|five|six|seven|eight|nine)/i;
-        const regexright =/(0rez|eno|owt|eerht|ruof|evif|xis|neves|thgie|enin)/i;
+        const regexright =/(orez|eno|owt|eerht|ruof|evif|xis|neves|thgie|enin)/i;
         let left=0,right=0;
 
         let li=getLeftNumberIndex(line);
