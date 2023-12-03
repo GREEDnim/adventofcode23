@@ -8,7 +8,6 @@ function isvalid(lno,si,ei){
    ei=parseInt(ei)
     if(lno-1>=0){
         for(let i=si-1;i<=ei+1;i++){
-
             if( i>=0 && i<lines[lno-1].length && !isNumber(lines[lno-1][i]) && !isDot(lines[lno-1][i])) return true;
         }
     }
