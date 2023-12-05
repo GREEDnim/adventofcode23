@@ -10,7 +10,11 @@ function ispresent(ele:string,arr:string[]){
 }
 
 let ans:number=0;
+let cardno:number=1;
+let incrementor:number=0;
+let map: Map<number, number> = new Map<number,number>();
 for(let line of lines){
+    
     let linearray:string[]=line.split(/[:|]/);
 
     const winningNumbers:string[]=linearray[1].trim().split(/\s+/)
@@ -18,9 +22,14 @@ for(let line of lines){
 
     const match:string[] = ourNumbers.filter((ele:string)=>ispresent(ele,winningNumbers))
 
-    if(match.length>0) ans+=(1<<(match.length-1))
-}
+    incrementor +=map.get(cardno) ?? 0;
+    let curcards:number = incrementor+1;
+    
+    map.set(cardno+1,(map.get(cardno+1)??0)+curcards);
+    map.set(cardno+match.length+1,(map.get(cardno+match.length+1)??0)-curcards);
 
+    ans+=curcards;
+    cardno++;
+}
 console.log(ans)
 
-export {}
